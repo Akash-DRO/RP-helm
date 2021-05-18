@@ -1,12 +1,12 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: rapidfire-container
+  name: {{ include "rapidfire-demo.fullname" . }}
 spec:
   template:
     spec:
       containers:
-      - name: rapidfire-container
+      - name: {{ include "rapidfire-demo.fullname" . }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.imagePullPolicy }}
         env:
